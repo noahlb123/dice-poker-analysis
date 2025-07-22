@@ -8,13 +8,13 @@ def strat(reroll_max):
     first_3d6 = [random.randint(1, 6) for i in range(3)]
     return np.sum([random.randint(1, 6) if roll <= reroll_max else roll for roll in first_3d6])
 
-#plot stradegies
+#plot strats
 x = [i for i in range(1, 7)]
 y = [np.mean([strat(n) for i in range(100000)]) for n in x]
 plt.plot(x, y)
 plt.xlabel('Max Dice Value Rerolled')
 plt.ylabel('Mean Final Sum')
-plt.show()
+plt.savefig('dice-poker-strats.png', dpi=200)
 plt.close()
 
 #plot sum CDF
@@ -26,7 +26,8 @@ plt.bar(bins[:-1], cdf)
 plt.xticks(bins[:-1])
 plt.xlabel('Roll Sum')
 plt.ylabel('Probability (roll<=sum)')
-plt.show()
+plt.savefig('dice-poker-cdf.png', dpi=200)
+plt.close()
 
 #calcuate probs for n opps
 df = pd.DataFrame(columns=[i for i in range(1, 11)], index=[i for i in range(3, 18)])
