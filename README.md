@@ -5,4 +5,4 @@ Dice poker is a simple game played in four steps:
 3. Each player can choose to raise, fold, or hold their bet
 4. Each player rerolls any of their own dice, then the player with the highest sum takes everyone’s bets
 
-For more info visit [place holder link](google.com)
+For more info visit [my blog post](https://noahlb123.github.io/blog/Over_Analyzing_Dice_Poker.html)
