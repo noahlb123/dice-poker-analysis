@@ -23,7 +23,7 @@ plt.close()
 
 #plot sum CDF
 data = [strat(0) for i in range(n_sims)]
-hist, bins = np.histogram(data, bins=[i for i in range(2, 20)])
+hist, bins = np.histogram(data, bins=[i for i in range(3, 20)])
 adj_hist = hist / len(data)
 cdf = [np.sum(adj_hist[:i]) for i in range(len(adj_hist))]
 plt.bar(bins[:-1], cdf)
@@ -34,14 +34,14 @@ plt.savefig('dice-poker-cdf.png', dpi=200)
 plt.close()
 
 #calcuate probs for n opps
-df = pd.DataFrame(columns=[i for i in range(1, 11)], index=[i for i in range(3, 18)])
+df = pd.DataFrame(columns=[i for i in range(1, 11)], index=[i for i in range(3, 19)])
 for n in df.columns:
     for i in range(len(cdf)):
         p = cdf[i]
         roll = bins[i + 1] - 1
         if roll == 2:
             continue
-        opp_p = (1 - p) ** (1 / n)
+        opp_p = 1 - (p ** n)
         df.loc[roll, n] = round(opp_p, 2)
 
 #get table colors
